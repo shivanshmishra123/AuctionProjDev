@@ -1,11 +1,14 @@
-import './App.css'
+import React from 'react';
+import Layout from './components/Layout';
+import Dashboard from './pages/Dashboard';
+import './components/Layout.css'; // Ensure layout styles are applied
 
 function App() {
   return (
-    <div className="app-container">
-      <h1>Hello World</h1>
-    </div>
-  )
+    <Layout>
+      <Dashboard />
+    </Layout>
+  );
 }
 
-export default App
+export default App;

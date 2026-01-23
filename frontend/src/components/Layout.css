@@ -1,0 +1,19 @@
+.app-layout {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+}
+
+.main-container {
+    padding-top: 80px;
+    /* New Header height */
+    display: flex;
+}
+
+.content-area {
+    margin-left: 280px;
+    /* New Sidebar width */
+    flex-grow: 1;
+    padding: 48px;
+    /* More generous padding */
+    min-height: calc(100vh - 80px);
+}
