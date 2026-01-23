@@ -1,0 +1,59 @@
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.page-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--accent-primary);
+    /* Remove gradient, keep solid royal blue */
+}
+
+.view-controls {
+    display: flex;
+    background-color: white;
+    padding: 4px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-card);
+}
+
+.view-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.view-btn.active {
+    background-color: var(--bg-hover);
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.auction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    /* Slightly wider cards */
+    gap: 32px;
+    /* More breathing room */
+}
+
+@media (max-width: 768px) {
+    .auction-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}

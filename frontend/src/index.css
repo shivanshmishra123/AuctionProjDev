@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+:root {
+  /* Colors - Royal Light Theme */
+  --bg-primary: #f8f9fa; /* Soft off-white */
+  --bg-secondary: #ffffff; /* Pure white */
+  --bg-card: #ffffff;
+  --bg-hover: #f1f5f9;
+  
+  --text-primary: #0f172a; /* Midnight Blue / Black */
+  --text-secondary: #475569; /* Slate Gray */
+  --text-muted: #94a3b8;
+
+  /* Accents */
+  --accent-primary: #1e3a8a; /* Royal Blue */
+  --accent-glow: rgba(30, 58, 138, 0.15);
+  --accent-secondary: #d4af37; /* Metallic Gold */
+  --accent-success: #059669; /* Emerald */
+  --accent-danger: #be123c; /* Ruby Red */
+  --accent-warning: #b45309; /* Bronze/Amber */
+
+  /* Borders & Shadows */
+  --border-subtle: #e2e8f0;
+  --border-accent: #d4af37;
+  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.2); /* Gold glow */
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Utilities */
+.text-gradient {
+  background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-danger);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(190, 18, 60, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(190, 18, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(190, 18, 60, 0); }
+}

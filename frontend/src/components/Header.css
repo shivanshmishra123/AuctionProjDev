@@ -1,0 +1,136 @@
+.header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 250px;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--accent-primary);
+    color: var(--accent-secondary);
+    /* Gold text on Blue */
+    border-radius: 4px;
+    /* More squared for classic feel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.3);
+}
+
+.logo-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.2px;
+    color: var(--accent-primary);
+}
+
+.search-section {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 40px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    background-color: var(--bg-secondary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.actions-section {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.create-btn {
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.create-btn:hover {
+    background-color: #172554;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+}
+
+.wallet-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-card);
+}
+
+.wallet-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wallet-amount {
+    font-weight: 600;
+    color: var(--accent-primary);
+    font-family: var(--font-serif);
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--accent-secondary);
+    /* Gold ring */
+    cursor: pointer;
+    object-fit: cover;
+}
