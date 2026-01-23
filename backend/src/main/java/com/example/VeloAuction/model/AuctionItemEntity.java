@@ -40,7 +40,7 @@ public class AuctionItem {
     @Column(nullable = false)
     private AuctionStatus status;
 
-    /* -------------------- Lifecycle Logic -------------------- */
+    /* -------------------- Lifecycle Logic ------------------ */
 
     @PrePersist
     public void prePersist() {
