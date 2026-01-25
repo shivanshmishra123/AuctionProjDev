@@ -2,18 +2,23 @@
 public class BiddingService {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+    private final DefaultRedisScript<Long> script;
+    public BiddingService() {
+        this.script = new DefaultRedisScript<>();
+        this.script.setScriptSource(new ResourceScriptSource(new ClassPathResource("scripts/bid.lua")));
+        this.script.setResultType(Long.class);
+    }
     private static final String BID_KEY_PREFIX = "auction:bid:";
-    public boolean validateAndPlaceBid(String auctionId, Double bidAmount) {
-        String key = BID_KEY_PREFIX + auctionId;
-        // 1. Get the current highest bid from Redis
-        Double currentHighest = (Double) redisTemplate.opsForValue().get(key);
-        // 2. Validation Logic
-        if (currentHighest != null && bidAmount <= currentHighest) {
-            return false; // Bid is too low
+    public void placeBid(String auctionId, Double amount,String userId) {
+        String key = "auction:bid:" + auctionId;
+        // The execution is atomic!
+        Long result = redisTemplate.execute(script, Collections.singletonList(key), amount.toString(), userId);
+        if (result == 1) {
+            // SUCCESS: Trigger the WebSocket broadcast here to update everyone
+        } else {
+            // FAILURE: Handle the "else" condition
+            // Send a targeted WebSocket message to THIS user only: "Bid too low!"
         }
-        // 3. Atomic Update (Note: In high concurrency, we'd use a Lua script here)
-        redisTemplate.opsForValue().set(key, bidAmount);
-        // 4. TODO: Send to Kafka for Audit/DB persistence
-        return true;
     }
 }
+
