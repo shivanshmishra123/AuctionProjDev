@@ -40,6 +40,9 @@ public class AuctionItem {
     @Column(nullable = false)
     private AuctionStatus status;
 
+    @Version
+    private Integer version;
+
     /* -------------------- Lifecycle Logic ------------------ */
 
     @PrePersist
@@ -118,6 +121,17 @@ public class AuctionItem {
 
     public void setStatus(AuctionStatus status) {
         this.status = status;
+    }
+    
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+    public void setCurrentPrice(Double currentPrice) {
+        this.currentPrice = currentPrice;
     }
 }
 
