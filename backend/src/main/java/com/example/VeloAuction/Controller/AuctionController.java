@@ -1,6 +1,6 @@
 @RestController
 @RequestMapping("/api/auctions")
-@CrossOrigin(origins = "http://localhost:3000") // Allows your frontend to connect
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuctionController {
 
     @Autowired
