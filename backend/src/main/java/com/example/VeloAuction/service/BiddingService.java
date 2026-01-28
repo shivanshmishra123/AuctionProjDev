@@ -2,6 +2,8 @@
 public class BiddingService {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+    @Autowired
+    private KafkaTemplate<String, AuctionEvent> kafkaTemplate;
     private final DefaultRedisScript<Long> script;
     public BiddingService() {
         this.script = new DefaultRedisScript<>();
@@ -14,7 +16,20 @@ public class BiddingService {
         // The execution is atomic!
         Long result = redisTemplate.execute(script, Collections.singletonList(key), amount.toString(), userId);
         if (result == 1) {
-            // SUCCESS: Trigger the WebSocket broadcast here to update everyone
+            // If Redis update is successful:
+        AuctionEvent event = new AuctionEvent(
+            UUID.randomUUID().toString(),
+            auctionId,
+            userId,
+            amount,
+            "BID_PLACED",
+            System.currentTimeMillis()
+        );
+
+        // Send to Kafka "velo-auction-logs" topic
+        kafkaTemplate.send("velo-auction-logs", event);
+
+        // SUCCESS: Trigger the WebSocket broadcast here to update everyone
         } else {
             // FAILURE: Handle the "else" condition
             // Send a targeted WebSocket message to THIS user only: "Bid too low!"
