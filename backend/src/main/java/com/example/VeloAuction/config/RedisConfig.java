@@ -1,3 +1,5 @@
+package com.example.VeloAuction.config;
+
 @Configuration
 public class RedisConfig {
 
